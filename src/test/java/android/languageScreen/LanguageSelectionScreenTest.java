@@ -38,7 +38,7 @@ public class LanguageSelectionScreenTest{
     }
 
     @Test
-    public void TC_01_VerifyTheLanguageScreenNextButtonBehaviour(){
+    public void TC_02_VerifyTheLanguageScreenNextButtonBehaviour(){
         LanguageSelectionScreen screenTest = ScreenObject.screen(LanguageSelectionScreen.class);
         Boolean buttonDisabled = Selenide.$(screenTest.languageScreenNextButton).should(Condition.visible).isEnabled();
         screenTest.clickTheLanguageButton("English");
