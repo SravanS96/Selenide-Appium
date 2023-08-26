@@ -42,6 +42,9 @@ public class LanguageSelectionScreen {
     @AndroidFindBy(xpath = "//android.widget.Button[@content-desc=\"ગુજરાતી\"]")
     private WebElement gujaratiLanguageButton;
 
+    @AndroidFindBy(xpath = "//android.widget.Button[@content-desc=\"Next\"]")
+    public WebElement languageScreenNextButton;
+
     public void clickTheLanguageButton(String language)  {
 
         switch (language.toLowerCase()){
@@ -70,4 +73,6 @@ public class LanguageSelectionScreen {
             default: System.out.println(language + " language option is not present in the app.");
         }
     }
+
+
 }
