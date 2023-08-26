@@ -6,7 +6,6 @@ import io.appium.java_client.android.options.UiAutomator2Options;
 import io.appium.java_client.remote.AutomationName;
 import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.remote.DesiredCapabilities;
 
 import javax.annotation.Nonnull;
 import java.net.MalformedURLException;
@@ -21,6 +20,7 @@ public class AndroidAppRunner implements WebDriverProvider {
         options.setPlatformName("Android");
         options.setDeviceName("My Testing");
         options.setAutomationName(AutomationName.ANDROID_UIAUTOMATOR2);
+        options.setCapability("autoGrantPermissions",true);
         options.setApp(System.getProperty("user.dir") + "/android-builds/app-uat-release.apk");
         try {
             return new AndroidDriver(new URL("http://127.0.0.1:4723"), options);
