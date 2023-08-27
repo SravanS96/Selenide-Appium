@@ -19,37 +19,50 @@ public class LoginScreenTest {
     }
 
     @Test
-    public void TC_01_VerifyMobileNumberInputFiled(){
+    public void TC_01_VerifyMobileNumberInputFiled() {
         LanguageSelectionScreen languageScreen = ScreenObject.screen(LanguageSelectionScreen.class);
-        LoginScreen loginScreen =ScreenObject.screen(LoginScreen.class);
+        LoginScreen loginScreen = ScreenObject.screen(LoginScreen.class);
         languageScreen.clickTheLanguageButton("English");
         $(languageScreen.languageScreenNextButton).should(Condition.visible).click();
         loginScreen.enterMobileNumber("9126538935");
     }
 
     @Test
-    public void TC_02_VerifyTheBehaviourOfNextButton(){
+    public void TC_02_VerifyTheBehaviourOfNextButton() {
         LanguageSelectionScreen languageScreen = ScreenObject.screen(LanguageSelectionScreen.class);
-        LoginScreen loginScreen =ScreenObject.screen(LoginScreen.class);
+        LoginScreen loginScreen = ScreenObject.screen(LoginScreen.class);
         languageScreen.clickTheLanguageButton("English");
         $(languageScreen.languageScreenNextButton).should(Condition.visible).click();
         Boolean nextButtonDisabled = $(loginScreen.loginScreenNextButton).should(Condition.visible).isEnabled();
         loginScreen.enterMobileNumber("9126538935");
         Boolean nextButtonEnabled = $(loginScreen.loginScreenNextButton).should(Condition.visible).isEnabled();
 
-        Assert.assertEquals(nextButtonDisabled,false);
-        Assert.assertEquals(nextButtonEnabled,true);
+        Assert.assertEquals(nextButtonDisabled, false);
+        Assert.assertEquals(nextButtonEnabled, true);
     }
 
     @Test
-    public void TC_03_VerifyMobileNumberInputFiled(){
+    public void TC_03_VerifyMobileNumberInputFiled() {
         LanguageSelectionScreen languageScreen = ScreenObject.screen(LanguageSelectionScreen.class);
-        LoginScreen loginScreen =ScreenObject.screen(LoginScreen.class);
+        LoginScreen loginScreen = ScreenObject.screen(LoginScreen.class);
         languageScreen.clickTheLanguageButton("English");
         $(languageScreen.languageScreenNextButton).should(Condition.visible).click();
         loginScreen.enterMobileNumber("my email id ");
         Boolean nextButtonDisabled = $(loginScreen.loginScreenNextButton).should(Condition.visible).isEnabled();
 
-        Assert.assertEquals(nextButtonDisabled,false);
+        Assert.assertEquals(nextButtonDisabled, false);
+    }
+
+    @Test
+    public void TC_04_VerifyTheInvalidMobileNumberErrorMessage() {
+        LanguageSelectionScreen languageScreen = ScreenObject.screen(LanguageSelectionScreen.class);
+        LoginScreen loginScreen = ScreenObject.screen(LoginScreen.class);
+        languageScreen.clickTheLanguageButton("English");
+        $(languageScreen.languageScreenNextButton).should(Condition.visible).click();
+        loginScreen.enterMobileNumber("9126535");
+        String errorMessage = $(loginScreen.invalidInputErrorMessage).getAttribute("content-desc");
+
+        Assert.assertEquals(errorMessage, "Please enter a valid phone number");
+
     }
 }
