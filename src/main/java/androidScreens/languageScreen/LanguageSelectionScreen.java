@@ -1,4 +1,4 @@
-package androidScreens;
+package androidScreens.languageScreen;
 
 import com.codeborne.selenide.Selenide;
 import io.appium.java_client.pagefactory.AndroidFindBy;

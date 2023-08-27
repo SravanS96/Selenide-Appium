@@ -1,6 +1,6 @@
 package android.languageScreen;
 
-import androidScreens.LanguageSelectionScreen;
+import androidScreens.languageScreen.LanguageSelectionScreen;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.appium.ScreenObject;
