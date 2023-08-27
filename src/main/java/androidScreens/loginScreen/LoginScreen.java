@@ -20,14 +20,22 @@ public class LoginScreen {
     @AndroidFindBy(xpath = "//android.view.View[@content-desc=\"Please enter a valid phone number\"]")
     public WebElement invalidInputErrorMessage;
 
-    public By errorMessage = AppiumSelectors.byAttribute("content-desc","Please enter a valid phone number");
+    @AndroidFindBy(xpath = "(//android.widget.ImageView[@resource-id=\"\"])[2]")
+    public WebElement menuButton;
+
+    @AndroidFindBy(xpath = "(//android.widget.ImageView[@resource-id=\"\"])[1]")
+    public WebElement menuButtonCloseButton;
 
 
-    public void enterMobileNumber(String mobileNumber){
+    public By errorMessage = AppiumSelectors.byAttribute("content-desc", "Please enter a valid phone number");
+
+
+    public void enterMobileNumber(String mobileNumber) {
         $(mobileNumberInputField).should(Condition.visible).click();
-        MobileAppUtilities.enterTextInTheInputField(mobileNumberInputField,mobileNumber);
+        MobileAppUtilities.enterTextInTheInputField(mobileNumberInputField, mobileNumber);
     }
-    public void clickNextButton(){
+
+    public void clickNextButton() {
         $(loginScreenNextButton).should(Condition.visible).click();
     }
 }

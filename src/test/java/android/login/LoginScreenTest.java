@@ -3,6 +3,7 @@ package android.login;
 import androidScreens.languageScreen.LanguageSelectionScreen;
 import androidScreens.loginScreen.LoginScreen;
 import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.appium.AppiumClickOptions;
 import com.codeborne.selenide.appium.ScreenObject;
 import com.codeborne.selenide.appium.SelenideAppium;
 import org.testng.Assert;
@@ -65,5 +66,15 @@ public class LoginScreenTest {
 
         Assert.assertEquals(errorMessage, "Please enter a valid phone number");
 
+    }
+
+    @Test
+    public void TC_05_VerifyMenuButtons() throws InterruptedException {
+        LanguageSelectionScreen languageScreen = ScreenObject.screen(LanguageSelectionScreen.class);
+        LoginScreen loginScreen = ScreenObject.screen(LoginScreen.class);
+        languageScreen.clickTheLanguageButton("English");
+        $(languageScreen.languageScreenNextButton).should(Condition.visible).click();
+        $(loginScreen.menuButton).should(Condition.visible).click();
+        Thread.sleep(5000);
     }
 }
