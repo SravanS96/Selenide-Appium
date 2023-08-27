@@ -26,6 +26,21 @@ public class LoginScreen {
     @AndroidFindBy(xpath = "(//android.widget.ImageView[@resource-id=\"\"])[1]")
     public WebElement menuButtonCloseButton;
 
+    @AndroidFindBy(accessibility = "Continue with Work E-Mail")
+    public WebElement continueWithWorkEmailButton;
+
+    @AndroidFindBy(accessibility = "Email Id")
+    public WebElement emailIdText;
+
+    @AndroidFindBy(xpath = "//android.widget.EditText[@hint=\"Enter Email Id\"]")
+    public WebElement emailIdInputFiled;
+
+    @AndroidFindBy(accessibility = "Please enter a valid email")
+    public WebElement invalidEmailErrorMessage;
+
+    @AndroidFindBy(accessibility = "Next")
+    public WebElement emailIdSubmitNextButton;
+
 
     public By errorMessage = AppiumSelectors.byAttribute("content-desc", "Please enter a valid phone number");
 
