@@ -12,6 +12,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 public class AndroidAppRunner implements WebDriverProvider {
+    static AndroidDriver androidDriver;
     @Nonnull
     @Override
     public WebDriver createDriver(@Nonnull Capabilities capabilities) {
@@ -23,9 +24,15 @@ public class AndroidAppRunner implements WebDriverProvider {
         options.setCapability("autoGrantPermissions",true);
         options.setApp(System.getProperty("user.dir") + "/android-builds/app-uat-release.apk");
         try {
-            return new AndroidDriver(new URL("http://127.0.0.1:4723"), options);
+            androidDriver = new AndroidDriver(new URL("http://127.0.0.1:4723"), options);
+            return androidDriver;
         } catch (MalformedURLException e) {
             throw new RuntimeException(e);
+        }
+    }
+    public static void quitAndroidDriver(){
+        if (androidDriver != null){
+            androidDriver.quit();
         }
     }
 }
