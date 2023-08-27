@@ -15,6 +15,9 @@ public class LoginScreen {
     @AndroidFindBy(xpath = "//android.widget.Button[@content-desc=\"Next\"]")
     public WebElement loginScreenNextButton;
 
+    @AndroidFindBy(xpath = "//android.view.View[@content-desc=\"Please enter a valid phone number\"]")
+    public WebElement invalidInputErrorMessage;
+
     public void enterMobileNumber(String mobileNumber){
         $(mobileNumberInputField).should(Condition.visible).click();
         MobileAppUtilities.enterTextInTheInputField(mobileNumberInputField,mobileNumber);
