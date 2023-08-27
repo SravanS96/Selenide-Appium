@@ -11,4 +11,9 @@ public class MobileAppUtilities {
         $(element).should(Condition.visible).click();
         $(element).should(Condition.visible).sendKeys(text);
     }
+
+    public static String getElementText(WebElement element){
+
+      return  $(element).should(Condition.visible).getText();
+    }
 }
