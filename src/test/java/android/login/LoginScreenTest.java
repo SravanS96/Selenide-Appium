@@ -40,4 +40,16 @@ public class LoginScreenTest {
         Assert.assertEquals(nextButtonDisabled,false);
         Assert.assertEquals(nextButtonEnabled,true);
     }
+
+    @Test
+    public void TC_03_VerifyMobileNumberInputFiled(){
+        LanguageSelectionScreen languageScreen = ScreenObject.screen(LanguageSelectionScreen.class);
+        LoginScreen loginScreen =ScreenObject.screen(LoginScreen.class);
+        languageScreen.clickTheLanguageButton("English");
+        $(languageScreen.languageScreenNextButton).should(Condition.visible).click();
+        loginScreen.enterMobileNumber("my email id ");
+        Boolean nextButtonDisabled = $(loginScreen.loginScreenNextButton).should(Condition.visible).isEnabled();
+
+        Assert.assertEquals(nextButtonDisabled,false);
+    }
 }
