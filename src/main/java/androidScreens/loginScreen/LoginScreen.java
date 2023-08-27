@@ -1,7 +1,9 @@
 package androidScreens.loginScreen;
 
 import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.appium.AppiumSelectors;
 import io.appium.java_client.pagefactory.AndroidFindBy;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import utilities.MobileAppUtilities;
 
@@ -17,6 +19,9 @@ public class LoginScreen {
 
     @AndroidFindBy(xpath = "//android.view.View[@content-desc=\"Please enter a valid phone number\"]")
     public WebElement invalidInputErrorMessage;
+
+    public By errorMessage = AppiumSelectors.byAttribute("content-desc","Please enter a valid phone number");
+
 
     public void enterMobileNumber(String mobileNumber){
         $(mobileNumberInputField).should(Condition.visible).click();

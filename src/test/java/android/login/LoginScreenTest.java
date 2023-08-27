@@ -60,7 +60,8 @@ public class LoginScreenTest {
         languageScreen.clickTheLanguageButton("English");
         $(languageScreen.languageScreenNextButton).should(Condition.visible).click();
         loginScreen.enterMobileNumber("9126535");
-        String errorMessage = $(loginScreen.invalidInputErrorMessage).getAttribute("content-desc");
+        String errorMessage = $(loginScreen.errorMessage).getAttribute("content-desc");
+
 
         Assert.assertEquals(errorMessage, "Please enter a valid phone number");
 
