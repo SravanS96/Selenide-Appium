@@ -1,11 +1,13 @@
 package android.login;
 
+import androidRunner.AndroidAppRunner;
 import androidScreens.languageScreen.LanguageSelectionScreen;
 import androidScreens.loginScreen.LoginScreen;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.appium.ScreenObject;
 import com.codeborne.selenide.appium.SelenideAppium;
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import utilities.MobileAppUtilities;
@@ -69,7 +71,7 @@ public class LoginScreenTest {
     }
 
     @Test
-    public void TC_05_VerifyMenuButtons() throws InterruptedException {
+    public void TC_05_VerifyMenuButtons() {
         LanguageSelectionScreen languageScreen = ScreenObject.screen(LanguageSelectionScreen.class);
         LoginScreen loginScreen = ScreenObject.screen(LoginScreen.class);
         languageScreen.clickTheLanguageButton("English");
@@ -90,7 +92,7 @@ public class LoginScreenTest {
     }
 
     @Test
-    public void TC_07_VerifyEmailIdInputField() throws InterruptedException {
+    public void TC_07_VerifyEmailIdInputField(){
         LanguageSelectionScreen languageScreen = ScreenObject.screen(LanguageSelectionScreen.class);
         LoginScreen loginScreen = ScreenObject.screen(LoginScreen.class);
         languageScreen.clickTheLanguageButton("English");
@@ -108,5 +110,10 @@ public class LoginScreenTest {
         Assert.assertFalse(nextButtonDisabled);
         Assert.assertTrue(nextButtonEnabled);
 
+    }
+
+    @AfterMethod
+    public void tearDown(){
+        AndroidAppRunner.quitAndroidDriver();
     }
 }
